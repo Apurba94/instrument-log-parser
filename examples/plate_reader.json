@@ -1,0 +1,14 @@
+{
+  "skip": ["^#", "^\\s*$"],
+  "reset_on": "^=== End of run",
+  "context": [
+    {"name": "run", "pattern": "^Run started:\\s*(?P<run_date>\\d{4}-\\d{2}-\\d{2})"},
+    {"name": "sample", "pattern": "^Sample ID:\\s*(?P<sample>\\S+)"},
+    {"name": "wavelength", "pattern": "Wavelength\\s*=\\s*(?P<wavelength_nm>\\d+)\\s*nm"}
+  ],
+  "record": [
+    {"name": "reading", "pattern": "^(?P<time>\\d{2}:\\d{2}:\\d{2})\\s+T=(?P<temp_c>[-\\d.,]+)\\s*C\\s+OD=(?P<od>\\S+)"}
+  ],
+  "numeric": ["temp_c", "od", "wavelength_nm"],
+  "decimal_comma": true
+}
